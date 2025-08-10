@@ -1,0 +1,15 @@
+.subscribe-btn {
+  background: #818a91;
+  color: #fff;
+
+  &:hover {
+    background: #000;
+  }
+}
+
+input {
+  width: 238px;
+  padding: 0 0.5rem;
+  font-size: 1.2rem;
+  border-radius: 0.3rem;
+}

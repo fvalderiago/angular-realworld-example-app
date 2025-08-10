@@ -63,13 +63,10 @@ export default class EditorComponent implements OnInit {
   }
 
   addTag() {
-    // retrieve tag control
     const tag = this.tagField.value;
-    // only add tag if it does not exist yet
     if (tag != null && tag.trim() !== "" && this.tagList.indexOf(tag) < 0) {
       this.tagList.push(tag);
     }
-    // clear the input
     this.tagField.reset("");
   }
 
@@ -80,10 +77,8 @@ export default class EditorComponent implements OnInit {
   submitForm(): void {
     this.isSubmitting = true;
 
-    // update any single tag
     this.addTag();
 
-    // post the changes
     this.articleService
       .create({
         ...this.articleForm.value,

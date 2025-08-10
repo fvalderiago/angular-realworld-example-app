@@ -1,5 +1,7 @@
 <app-layout-header />
 
+<a routerLink="/newsletter-manager" *ngIf="isLoggedIn">Manage Subscribers</a>
+
 <router-outlet></router-outlet>
 
 <app-layout-footer />

@@ -5,3 +5,11 @@
 .tag-pill {
   cursor: pointer;
 }
+
+.newsletter-sidebar {
+  margin-top: 2rem;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #5cb85c;
+}

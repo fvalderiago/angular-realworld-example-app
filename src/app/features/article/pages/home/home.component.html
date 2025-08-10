@@ -24,7 +24,7 @@
               <a
                 class="nav-link"
                 [ngClass]="{
-                  active: listConfig.type === 'all' && !listConfig.filters.tag
+                  active: listConfig.type === 'all' && !listConfig.filters.tag,
                 }"
                 (click)="setListTo('all')"
               >
@@ -62,6 +62,9 @@
           <div [hidden]="!tagsLoaded || tags.length > 0">
             No tags are here... yet.
           </div>
+        </div>
+        <div class="newsletter-sidebar">
+          <app-newsletter-form></app-newsletter-form>
         </div>
       </div>
     </div>

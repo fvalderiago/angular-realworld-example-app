@@ -1,0 +1,30 @@
+<div class="container page">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Newsletter Subscribers</h2>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>Subscribed At</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let subscriber of subscribers; let i = index">
+            <td>{{ subscriber.email }}</td>
+            <td>{{ subscriber.subscribedAt }}</td>
+            <td>
+              <button
+                class="btn btn-danger btn-sm"
+                (click)="removeSubscriber(i)"
+              >
+                Remove
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -9,12 +9,18 @@ import { UserService } from "../../../../core/auth/services/user.service";
 import { RxLet } from "@rx-angular/template/let";
 import { IfAuthenticatedDirective } from "../../../../core/auth/if-authenticated.directive";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
-
+import { NewsletterFormComponent } from "../../../../newsletter/newsletter-form/newsletter-form.component";
 @Component({
   selector: "app-home-page",
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.css"],
-  imports: [NgClass, ArticleListComponent, RxLet, IfAuthenticatedDirective],
+  imports: [
+    NgClass,
+    ArticleListComponent,
+    RxLet,
+    IfAuthenticatedDirective,
+    NewsletterFormComponent,
+  ],
 })
 export default class HomeComponent implements OnInit {
   isAuthenticated = false;
@@ -33,31 +39,16 @@ export default class HomeComponent implements OnInit {
     private readonly userService: UserService,
   ) {}
 
-  ngOnInit(): void {
-    this.userService.isAuthenticated
-      .pipe(
-        tap((isAuthenticated) => {
-          if (isAuthenticated) {
-            this.setListTo("feed");
-          } else {
-            this.setListTo("all");
-          }
-        }),
-        takeUntilDestroyed(this.destroyRef),
-      )
-      .subscribe(
-        (isAuthenticated: boolean) => (this.isAuthenticated = isAuthenticated),
-      );
+  ngOnInit() {
+    this.isAuthenticated = !!localStorage.getItem("jwtToken");
   }
 
   setListTo(type: string = "", filters: Object = {}): void {
-    // If feed is requested but user is not authenticated, redirect to login
     if (type === "feed" && !this.isAuthenticated) {
       void this.router.navigate(["/login"]);
       return;
     }
 
-    // Otherwise, set the list object
     this.listConfig = { type: type, filters: filters };
   }
 }

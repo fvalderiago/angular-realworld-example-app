@@ -1,0 +1,16 @@
+<form [formGroup]="form" (ngSubmit)="subscribe()">
+  <input
+    type="email"
+    formControlName="email"
+    placeholder="Enter your email"
+    required
+  />
+  <button
+    type="submit"
+    [disabled]="form.invalid || loading"
+    class="subscribe-btn btn btn-md btn-primary"
+  >
+    Subscribe
+  </button>
+  <div *ngIf="message" class="message">{{ message }}</div>
+</form>
